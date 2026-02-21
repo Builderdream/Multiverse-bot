@@ -1,3 +1,12 @@
+const { Client, GatewayIntentBits } = require("discord.js");
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
 client.on("messageCreate", async message => {
     if (message.author.bot) return; // ignore bots
     if (!talkingEnabled) return; // AI only works when activated
@@ -47,4 +56,5 @@ client.on("messageCreate", async message => {
     } catch (err) {
         console.error(err);
     }
+
 });
